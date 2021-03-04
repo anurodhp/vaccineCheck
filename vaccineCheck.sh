@@ -19,17 +19,17 @@ curl 'https://mzqsa4noec.execute-api.us-east-1.amazonaws.com/prod' \
 for row in $(cat results.json | jq  -r '.[] | select(.hasAvailability==true)  | select(.name |startswith("Walgreens")) | "Available in "+ .name + "," + .city +" "+ .signUpLink  | @base64'); 
 do
     message=`echo ${row} | base64 --decode `
-    echo "$message" |sendxmpp anu@yax.im  -t
+    echo "$message" |sendxmpp <address> -t
 done
 
 for row in $(cat results.json | jq  -r '.[] | select(.hasAvailability==true)  | select(.name |startswith("CVS")) | "Available in "+ .name + "," + .city +" "+ .signUpLink  | @base64'); 
 do
     message=`echo ${row} | base64 --decode `
-    echo "$message" |sendxmpp anu@yax.im  -t
+    echo "$message" |sendxmpp <address>  -t
 done
 
 for row in $(cat results.json | jq  -r '.[] | select(.hasAvailability==true)  | select(.name |startswith("Fenway Park")) | "Available in "+ .name + "," + .city +" "+ .signUpLink  | @base64'); 
 do
     message=`echo ${row} | base64 --decode `
-    echo "$message" |sendxmpp anu@yax.im  -t
+    echo "$message" |sendxmpp <address>  -t
 done
